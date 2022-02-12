@@ -32,13 +32,14 @@ const NavItem = styled.li<{ menu?: any }>`
     menu &&
     css`
       ${tw`
-    text-white
-    text-xl
-    mb-3
-    focus: text-gray-200
+        text-white
+        text-xl
+        mb-3
   `};
     `};
 `;
+
+// TODO: Averiguar como hacer que el menú salga cerrado
 
 export function NavItems() {
   const isMobile = useMediaQuery({ maxWidth: SCREENS.sm });
