@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { BookCard } from "../../components/bookCard";
+import { Footer } from "../../components/footer";
 import { Marginer } from "../../components/marginer";
 import { Navbar } from "../../components/navbar";
 import { AboutUs } from "./aboutUs";
@@ -21,6 +22,7 @@ const PageContainer = styled.div`
 `;
 
 // * Aquí añade navbar, navbar a su vez añadió logo y logo añadió la propia imagen.
+// TODO: hacer que PageContainer sea tipo plantilla (que todas las páginas tengan navbar y footer)
 export function HomePage() {
   return (
     <PageContainer>
@@ -34,6 +36,7 @@ export function HomePage() {
       <AboutUs />
       <Marginer direction="vertical" margin="8em" />
       <TopCars />
+      <Footer />
     </PageContainer>
   );
 }
