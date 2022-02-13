@@ -43,6 +43,7 @@ const NavItem = styled.li<{ menu?: any }>`
 
 export function NavItems() {
   const isMobile = useMediaQuery({ maxWidth: SCREENS.sm });
+
   if (isMobile) {
     return (
       <Menu styles={menuStyles}>
