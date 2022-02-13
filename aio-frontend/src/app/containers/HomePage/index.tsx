@@ -24,6 +24,7 @@ const PageContainer = styled.div`
 // * Aquí añade navbar, navbar a su vez añadió logo y logo añadió la propia imagen.
 // TODO: hacer que PageContainer sea tipo plantilla (que todas las páginas tengan navbar y footer)
 export function HomePage() {
+
   return (
     <PageContainer>
       <Navbar />

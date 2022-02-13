@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import { Logo } from "../logo";
 import { NavItems } from "./navitems";
 
-const NavbarContainer = styled.div`
+const NavbarContainer = styled.nav`
   min-height: 68px;
   ${tw`
       w-full

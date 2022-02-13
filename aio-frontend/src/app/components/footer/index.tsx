@@ -10,7 +10,6 @@ background-color: #1d2124;
 ${tw`
 flex
 flex-col
-h-full
 min-w-full
 pt-8
 md:pt-16
@@ -151,6 +150,7 @@ const CopyrightText = styled.div`
 font-size: 13px;
 ${tw`
 text-gray-300
+mb-1
 `};
 `;
 

@@ -20,6 +20,7 @@ const menuStyles = {
     background: "#bdc3c7",
   },
   bmMenuWrap: {
+    transition: "",
     position: "fixed",
     width: "60%",
     height: "100%",

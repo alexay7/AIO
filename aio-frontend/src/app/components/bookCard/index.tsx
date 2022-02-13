@@ -1,6 +1,6 @@
-import { faCalendarAlt, faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarAlt, faCaretDown, faCaretUp, faSortNumericUpAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
 import { Button } from "../button";

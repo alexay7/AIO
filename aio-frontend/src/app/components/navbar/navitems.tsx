@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
 import { slide as Menu } from "react-burger-menu";
@@ -40,19 +40,13 @@ ${({ menu }) =>
     `};
 `;
 
-// TODO: Averiguar como hacer que el menú salga cerrado
-
 export function NavItems() {
-  const [MenuOpen, OpenMenu] = useState(false)
   const isMobile = useMediaQuery({ maxWidth: SCREENS.sm });
 
-  const toggleMenu = () => {
-    OpenMenu(!MenuOpen)
-  }
 
   if (isMobile) {
     return (
-      <Menu styles={menuStyles} onStateChange={toggleMenu}>
+      <Menu right styles={menuStyles} >
         <ListContainer>
           <NavItem menu>
             <a href="/">Home</a>
