@@ -1,6 +1,3 @@
-/* eslint-disable prettier/prettier */
-import { CarsModule } from './components/cars/cars.module';
-/* eslint-disable prettier/prettier */
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
@@ -14,7 +11,7 @@ import { ComponentsModule } from './components/components.module';
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(
-      'mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false',
+      process.env.MONGOURL,
     ),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       playground: true,

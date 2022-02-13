@@ -1,5 +1,4 @@
 import { CarsService } from './cars.service';
-/* eslint-disable prettier/prettier */
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { CarSchema } from "./car.model";
