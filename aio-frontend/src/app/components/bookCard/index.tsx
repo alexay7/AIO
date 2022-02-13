@@ -98,52 +98,53 @@ const DateCalendar = styled(Calendar) <{ offset?: boolean }>`
   }
 `;
 
+// TODO: Cerrar calendario cuando se haga click fuera de él
 export function BookCard() {
-    // *Asignar States a un componente
-    const [startDate, setStartDate] = useState<Date>(new Date());
-    const [isStartCalendarOpen, setStartCalendarOpen] = useState(false);
-    const [returnDate, setReturnDate] = useState<Date>(new Date());
-    const [isReturnCalendarOpen, setReturnCalendarOpen] = useState(false);
+  // *Asignar States a un componente
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [isStartCalendarOpen, setStartCalendarOpen] = useState(false);
+  const [returnDate, setReturnDate] = useState<Date>(new Date());
+  const [isReturnCalendarOpen, setReturnCalendarOpen] = useState(false);
 
-    const toggleStartDateCalendar = () => {
-        setStartCalendarOpen(!isStartCalendarOpen);
-        if (isReturnCalendarOpen) {
-            setReturnCalendarOpen(false);
-        }
-    };
+  const toggleStartDateCalendar = () => {
+    setStartCalendarOpen(!isStartCalendarOpen);
+    if (isReturnCalendarOpen) {
+      setReturnCalendarOpen(false);
+    }
+  };
 
-    const toggleReturnDateCalendar = () => {
-        setReturnCalendarOpen(!isReturnCalendarOpen);
-        if (isStartCalendarOpen) {
-            setStartCalendarOpen(false);
-        }
-    };
+  const toggleReturnDateCalendar = () => {
+    setReturnCalendarOpen(!isReturnCalendarOpen);
+    if (isStartCalendarOpen) {
+      setStartCalendarOpen(false);
+    }
+  };
 
-    return (
-        <CardContainer>
-            <ItemContainer>
-                <Icon onClick={toggleStartDateCalendar}>
-                    <FontAwesomeIcon icon={faCalendarAlt} />
-                </Icon >
-                <Name onClick={toggleStartDateCalendar}>Pick Up Date</Name>
-                <SmallIcon onClick={toggleStartDateCalendar}>
-                    <FontAwesomeIcon icon={isStartCalendarOpen ? faCaretDown : faCaretUp} />
-                </SmallIcon>
-                {isStartCalendarOpen && <DateCalendar value={startDate} onChange={setStartDate} />}
-            </ItemContainer>
-            <LineSeparator />
-            <ItemContainer>
-                <Icon onClick={toggleReturnDateCalendar}>
-                    <FontAwesomeIcon icon={faCalendarAlt} />
-                </Icon>
-                <Name onClick={toggleReturnDateCalendar}>Return Date</Name>
-                <SmallIcon onClick={toggleReturnDateCalendar}>
-                    <FontAwesomeIcon icon={isReturnCalendarOpen ? faCaretDown : faCaretUp} />
-                </SmallIcon>
-                {isReturnCalendarOpen && <DateCalendar value={returnDate} onChange={setReturnDate} offset={true} />}
-            </ItemContainer>
-            <Marginer direction="horizontal" margin="2em" />
-            <Button text="Book Your Ride" />
-        </CardContainer>
-    );
+  return (
+    <CardContainer>
+      <ItemContainer>
+        <Icon onClick={toggleStartDateCalendar}>
+          <FontAwesomeIcon icon={faCalendarAlt} />
+        </Icon >
+        <Name onClick={toggleStartDateCalendar}>Pick Up Date</Name>
+        <SmallIcon onClick={toggleStartDateCalendar}>
+          <FontAwesomeIcon icon={isStartCalendarOpen ? faCaretDown : faCaretUp} />
+        </SmallIcon>
+        {isStartCalendarOpen && <DateCalendar value={startDate} onChange={setStartDate} />}
+      </ItemContainer>
+      <LineSeparator />
+      <ItemContainer>
+        <Icon onClick={toggleReturnDateCalendar}>
+          <FontAwesomeIcon icon={faCalendarAlt} />
+        </Icon>
+        <Name onClick={toggleReturnDateCalendar}>Return Date</Name>
+        <SmallIcon onClick={toggleReturnDateCalendar}>
+          <FontAwesomeIcon icon={isReturnCalendarOpen ? faCaretDown : faCaretUp} />
+        </SmallIcon>
+        {isReturnCalendarOpen && <DateCalendar value={returnDate} onChange={setReturnDate} offset={true} />}
+      </ItemContainer>
+      <Marginer direction="horizontal" margin="2em" />
+      <Button text="Book Your Ride" />
+    </CardContainer>
+  );
 }
