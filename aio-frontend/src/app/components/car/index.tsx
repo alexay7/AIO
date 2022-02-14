@@ -10,7 +10,7 @@ import tw from "twin.macro";
 import { ICar } from "../../../typings/car";
 import { Button } from "../button";
 
-interface ICarProps extends ICar {}
+interface ICarProps extends ICar { }
 
 const CarContainer = styled.div`
   width: 16.5em;
