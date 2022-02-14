@@ -1,11 +1,11 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
+import { HttpModule } from "@nestjs/axios";
 import { ConfigModule } from '@nestjs/config';
-import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ComponentsModule } from './components/components.module';
+import { CarModule } from './car/car.module';
 
 // En este archivo se importan todos los componentes de la app
 // Lo normal sería ponerlos de uno en uno en el array imports pero con
@@ -16,14 +16,8 @@ import { ComponentsModule } from './components/components.module';
     MongooseModule.forRoot(
       process.env.MONGOURL,
     ),
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      playground: true,
-      debug: process.env.NODE_ENV === 'development' ? true : false,
-      autoSchemaFile: 'schema.gql',
-      driver: ApolloDriver
-    }),
-    ComponentsModule
-
+    HttpModule,
+    CarModule
   ],
   controllers: [AppController],
   providers: [AppService],

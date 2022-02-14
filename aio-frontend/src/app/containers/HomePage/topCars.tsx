@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
-import { ICar } from "../../../typings/car";
-import { Car } from "../../components/car";
 import Carousel, { Dots, slidesToShowPlugin } from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 import { useMediaQuery } from "react-responsive";
 import { SCREENS } from "../../components/responsive";
-import { gql, useQuery } from "@apollo/client";
 
 const TopCarsContainer = styled.div`
   ${tw`
@@ -44,11 +41,6 @@ mt-7
 md:mt-10
 `};
 `;
-interface Data {
-    allPeople: {
-        people: Array<{ id: string; name: string }>;
-    };
-};
 
 export function TopCars() {
     const [current, setCurrent] = useState(0);
