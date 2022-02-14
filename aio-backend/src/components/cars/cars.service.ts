@@ -1,3 +1,6 @@
+// En este archivo van las funciones internas que contactan con la base de datos
+// Las consultas que se hagan a GraphQL llamaran a estas funciones para entregar los datos
+
 import { CreateCarDto } from './dto/create-car.dto';
 import { Model } from 'mongoose';
 import { Injectable, InternalServerErrorException } from "@nestjs/common";

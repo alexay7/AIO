@@ -1,3 +1,5 @@
+// En este archivo van las funciones a las que podrá acceder graphQL
+
 import { CreateCarDto } from './dto/create-car.dto';
 import { Car } from './interfaces/car.interface';
 import { CarsService } from './cars.service';

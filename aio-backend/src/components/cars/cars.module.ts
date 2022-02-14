@@ -1,3 +1,5 @@
+// Este archivo controla todo lo relacionado con Cars y lo pone junto para importarlo en la app
+
 import { CarsService } from './cars.service';
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";

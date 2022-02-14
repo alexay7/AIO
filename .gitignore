@@ -24,7 +24,7 @@ sketch
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-dist/*
+**/dist/*
 !/dist/v4
 !/dist/v5
 !/dist/v6
