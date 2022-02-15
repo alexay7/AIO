@@ -1,0 +1,1 @@
+Aquí se encuentran los componentes principales de la api, donde se definen las distintas rutas y objetos

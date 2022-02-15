@@ -1,0 +1,1 @@
+Aquí se definen las consultas a la api y se controlan las respuestas recibidas.

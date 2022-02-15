@@ -1,0 +1,1 @@
+Esquema para crear el objeto en mongodb

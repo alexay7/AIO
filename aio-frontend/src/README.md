@@ -1,0 +1,1 @@
+Aquí se definen todas las páginas del frontend y sus componentes

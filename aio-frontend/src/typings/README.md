@@ -1,0 +1,1 @@
+Carpeta para añadir interfaces o comunicar a typescript modulos que no estén declarados

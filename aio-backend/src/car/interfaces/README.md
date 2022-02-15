@@ -1,0 +1,1 @@
+Esquema para adaptar el objeto a typescript
