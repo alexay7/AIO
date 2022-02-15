@@ -7,9 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CarModule } from './car/car.module';
 
-// En este archivo se importan todos los componentes de la app
-// Lo normal sería ponerlos de uno en uno en el array imports pero con
-// El "components.module.ts" se ahorra trabajo importando todo en uno
+// En este archivo se unen todos los componentes de la app
 @Module({
   imports: [
     ConfigModule.forRoot(),

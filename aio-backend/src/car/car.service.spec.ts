@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CarService } from './car.service';
 
+// Este archivo sirve para hacer unit tests
 describe('CarService', () => {
   let service: CarService;
 

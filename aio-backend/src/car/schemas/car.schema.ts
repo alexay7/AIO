@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-// Aquí se declara el modelo por primera vez, para decirselo a mongodb
+// Aquí se declara el modelo por primera vez, para mongoDB
 export const CarSchema = new mongoose.Schema({
     thumbnailSrc: String,
     name: String,
