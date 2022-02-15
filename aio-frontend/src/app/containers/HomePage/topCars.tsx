@@ -7,7 +7,7 @@ import { ICar } from "../../../typings/car";
 import { Car } from "../../components/car";
 import { useMediaQuery } from "react-responsive";
 import { SCREENS } from "../../components/responsive";
-import CarsService from "../services/car.service"
+import CarsService from "../../services/car.service"
 
 const TopCarsContainer = styled.div`
   ${tw`
@@ -45,11 +45,13 @@ md:mt-10
 `};
 `;
 
+// Primero se crea una interfaz con los datos que va a necesitar el carousel para funcionar
 interface ICarouselProps {
   Cars?: ICar[],
   Length?: number
 }
 
+// Se añaden los props como argumento
 function ControlledCarousel(props: ICarouselProps) {
   const [current, setCurrent] = useState(0);
 
@@ -108,17 +110,19 @@ function ControlledCarousel(props: ICarouselProps) {
 
 type Props = {};
 class TopCars extends React.Component<any, any> {
+  // En el constructor se añaden los estados y funciones que va a usar la clase
+  // Si en vez de una clase fuera una función se podrían usar hooks del estilo [variable,función] = useState(tipodedato)
+
   constructor(props: Props) {
     super(props);
     this.getCars = this.getCars.bind(this);
     this.state = {
-      cars: [],
-      currentTutorial: null,
-      currentIndex: -1,
-      searchTitle: ""
+      cars: []
     };
   }
 
+  // Se define lo que hace la función, en este caso contactar con la api mediante el servicio Cars y
+  // llamar a la función getAll(), que devuelve una lista con todos los coches.
   getCars() {
     CarsService.getAll()
       .then((response: any) => {
@@ -145,6 +149,7 @@ class TopCars extends React.Component<any, any> {
       });
   }
 
+  // Esto se ejecuta cuando el componente ya está montado, sirve para inicializar los estados
   componentDidMount() {
     this.getCars();
   }
@@ -154,6 +159,7 @@ class TopCars extends React.Component<any, any> {
     return (
       <TopCarsContainer>
         <Title>Explore Our Top Deals</Title>
+        {/* Se pasan los props declarados antes en la interfaz en forma de parámetros */}
         <ControlledCarousel Cars={this.state.cars} Length={this.state.cars.length} />
       </TopCarsContainer>
     );

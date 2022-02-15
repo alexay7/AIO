@@ -1,0 +1,1 @@
+En esta carpeta se meten los archivos que estructuran las páginas propiamente dichas.
