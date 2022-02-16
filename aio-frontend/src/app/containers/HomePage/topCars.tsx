@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import Carousel, { Dots, slidesToShowPlugin } from "@brainhubeu/react-carousel";
@@ -7,7 +7,12 @@ import { ICar } from "../../../typings/car";
 import { Car } from "../../components/car";
 import { useMediaQuery } from "react-responsive";
 import { SCREENS } from "../../components/responsive";
-import CarsService from "../../services/car.service"
+import { setTopCars } from "./slice";
+import { useDispatch, useSelector } from "react-redux";
+import axios, { AxiosResponse } from "axios";
+import { createSelector } from "reselect";
+import { makeSelectTopCars } from "./selectors";
+import MoonLoader from "react-spinners/MoonLoader"
 
 const TopCarsContainer = styled.div`
   ${tw`
@@ -45,125 +50,108 @@ md:mt-10
 `};
 `;
 
-// Primero se crea una interfaz con los datos que va a necesitar el carousel para funcionar
-interface ICarouselProps {
-  Cars?: ICar[],
-  Length?: number
-}
+const LoadingContainer = styled.div`
+  ${tw`
+  mt-7
+w-full
+flex
+items-center
+justify-center
+text-base
+font-black
+`};
+`;
 
-// Se añaden los props como argumento
-function ControlledCarousel(props: ICarouselProps) {
+const actionDispatch = (dispatch: Dispatch<any>) => ({
+  setTopCars: (cars: ICar[]) => dispatch(setTopCars(cars)),
+});
+
+const stateSelector = createSelector(makeSelectTopCars, (topCars) => ({
+  topCars
+}));
+
+export function TopCars() {
   const [current, setCurrent] = useState(0);
+  const [isLoading, setLoading] = useState(false);
 
   const isMobile = useMediaQuery({ maxWidth: SCREENS.sm })
 
-  const cars = props.Cars;
-  let slides: JSX.Element[] = []
+  const { topCars } = useSelector(stateSelector)
+  const { setTopCars } = actionDispatch(useDispatch());
 
-  cars?.forEach(car => {
-    slides.push(<Car {...car} />)
-  });
-  const numberOfDots = isMobile ? props.Length : Math.ceil(props.Length || 1 / 3);
+  const fetchTopCars = async () => {
+    setLoading(true);
+    await new Promise(f => setTimeout(f, 5000));
+    await axios.get<ICar[]>('http://localhost:9000/car').then((response: AxiosResponse) => {
+      const cars = response.data
+      if (cars) {
+        setTopCars(cars);
+        setLoading(false);
+      }
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
+
+  const cars = topCars.map((car) => <Car {...car} />)
+
+  // Sirve para pasar una función que se ejecute al pasar algo que se define en el array del segundo argumento.
+  // Si no se pone nada se activa cuando el componente se actualiza, si se pone un hook se activará cuando cambie el valor.
+  useEffect(() => {
+    fetchTopCars();
+  }, []);
+
+  const numberOfDots = isMobile ? cars.length : Math.ceil(cars.length || 1 / 3);
   // TODO: sustituir esto por un carousel que permita cambiar de página y no de uno en uno
   return (
-    <CarsContainer>
-      <Carousel
-        value={current}
-        onChange={setCurrent}
-        slides={slides}
-        plugins={[
-          "clickToChange",
-          {
-            resolve: slidesToShowPlugin,
-            options: {
-              numberOfSlides: 3,
-            },
-          },
-        ]}
-        breakpoints={{
-          640: {
-            plugins: [
+    <TopCarsContainer>
+      <Title>Explore Our Top Deals</Title>
+      {isLoading && (
+        <LoadingContainer>
+          <MoonLoader loading size={20} />
+        </LoadingContainer>
+      )}
+      {!isLoading && (
+        <CarsContainer>
+          <Carousel
+            value={current}
+            onChange={setCurrent}
+            slides={cars}
+            plugins={[
+              "clickToChange",
               {
                 resolve: slidesToShowPlugin,
                 options: {
-                  numberOfSlides: 1,
+                  numberOfSlides: 3,
                 },
               },
-            ],
-          },
-          900: {
-            plugins: [
-              {
-                resolve: slidesToShowPlugin,
-                options: {
-                  numberOfSlides: 2,
-                },
+            ]}
+            breakpoints={{
+              640: {
+                plugins: [
+                  {
+                    resolve: slidesToShowPlugin,
+                    options: {
+                      numberOfSlides: 1,
+                    },
+                  },
+                ],
               },
-            ],
-          },
-        }}
-      />
-      <Dots value={current} onChange={setCurrent} number={numberOfDots} />
-    </CarsContainer>
+              900: {
+                plugins: [
+                  {
+                    resolve: slidesToShowPlugin,
+                    options: {
+                      numberOfSlides: 2,
+                    },
+                  },
+                ],
+              },
+            }}
+          />
+          <Dots value={current} onChange={setCurrent} number={numberOfDots} />
+        </CarsContainer>
+      )}
+    </TopCarsContainer>
   );
 }
-
-type Props = {};
-class TopCars extends React.Component<any, any> {
-  // En el constructor se añaden los estados y funciones que va a usar la clase
-  // Si en vez de una clase fuera una función se podrían usar hooks del estilo [variable,función] = useState(tipodedato)
-
-  constructor(props: Props) {
-    super(props);
-    this.getCars = this.getCars.bind(this);
-    this.state = {
-      cars: []
-    };
-  }
-
-  // Se define lo que hace la función, en este caso contactar con la api mediante el servicio Cars y
-  // llamar a la función getAll(), que devuelve una lista con todos los coches.
-  getCars() {
-    CarsService.getAll()
-      .then((response: any) => {
-        let cars: ICar[] = []
-        response.data.forEach((car: { name: any; mileage: any; thumbnailSrc: any; dailyprice: any; monthlyprice: any; geartype: any; gas: any; }) => {
-          const newCar: ICar = {
-            name: car.name,
-            mileage: car.mileage,
-            thumbnailSrc:
-              car.thumbnailSrc,
-            dailyPrice: car.dailyprice,
-            monthlyPrice: car.monthlyprice,
-            gearType: car.geartype,
-            gas: car.gas,
-          };
-          cars.push(newCar)
-        });
-        this.setState({
-          cars: cars,
-        });
-      })
-      .catch((e: Error) => {
-        console.log(e);
-      });
-  }
-
-  // Esto se ejecuta cuando el componente ya está montado, sirve para inicializar los estados
-  componentDidMount() {
-    this.getCars();
-  }
-
-  render() {
-    // TODO: sustituir esto por un carousel que permita cambiar de página y no de uno en uno
-    return (
-      <TopCarsContainer>
-        <Title>Explore Our Top Deals</Title>
-        {/* Se pasan los props declarados antes en la interfaz en forma de parámetros */}
-        <ControlledCarousel Cars={this.state.cars} Length={this.state.cars.length} />
-      </TopCarsContainer>
-    );
-  }
-}
-
-export default TopCars

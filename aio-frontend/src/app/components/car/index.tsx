@@ -139,10 +139,10 @@ export function Car(props: ICarProps) {
   const {
     name,
     thumbnailSrc,
-    dailyPrice,
-    monthlyPrice,
+    dailyprice,
+    monthlyprice,
     mileage,
-    gearType,
+    geartype,
     gas,
   } = props;
 
@@ -154,11 +154,11 @@ export function Car(props: ICarProps) {
       <CarName>{name}</CarName>
       <PricesContainer>
         <DailyPrice>
-          ${dailyPrice}
+          ${dailyprice}
           <SmallText>/Day</SmallText>
         </DailyPrice>
         <MonthlyPrice>
-          ${monthlyPrice}
+          ${monthlyprice}
           <SmallText>/Month</SmallText>
         </MonthlyPrice>
       </PricesContainer>
@@ -174,7 +174,7 @@ export function Car(props: ICarProps) {
           <SmallIcon>
             <FontAwesomeIcon icon={faEllipsisH} />
           </SmallIcon>
-          <CarInfo>{gearType}</CarInfo>
+          <CarInfo>{geartype}</CarInfo>
         </CarDetail>
         <CarDetail>
           <SmallIcon>

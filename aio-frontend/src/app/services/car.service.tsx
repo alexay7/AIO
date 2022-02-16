@@ -4,7 +4,7 @@ import { ICar } from "../../typings/car";
 // En este archivo se escriben las funciones que van a contactar con la api y devolver las respuestas
 class CarsService {
     getAll() {
-        return http.get<Array<ICar>>("/car");
+        return http.get<ICar[]>("/car");
     }
 
     get(id: string) {

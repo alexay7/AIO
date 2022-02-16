@@ -5,11 +5,11 @@ import { BookCard } from "../../components/bookCard";
 import { Footer } from "../../components/footer";
 import { Marginer } from "../../components/marginer";
 import { Navbar } from "../../components/navbar";
-import AboutUs from "./aboutUs";
-import BookingSteps from "./bookingSteps";
-import TopCars from "./topCars";
+import { AboutUs } from "./aboutUs";
+import { BookingSteps } from "./bookingSteps";
+import { TopCars } from "./topCars";
 // import { TopCars } from "./topCars";
-import TopSection from "./topSection";
+import { TopSection } from "./topSection";
 
 const PageContainer = styled.div`
   ${tw`
@@ -23,26 +23,21 @@ const PageContainer = styled.div`
 `;
 
 // TODO: hacer que PageContainer sea tipo plantilla (que todas las páginas tengan navbar y footer)
-class HomePage extends React.Component {
-  render() {
-
-    return (
-      <PageContainer>
-        <Navbar />
-        {/* Aquí añade navbar, navbar a su vez añadió logo y logo añadió la propia imagen. */}
-        <TopSection />
-        <Marginer direction="vertical" margin="8em" />
-        <BookCard />
-        <Marginer direction="vertical" margin="8em" />
-        <BookingSteps />
-        <Marginer direction="vertical" margin="8em" />
-        <AboutUs />
-        <Marginer direction="vertical" margin="8em" />
-        <TopCars />
-        <Footer />
-      </PageContainer>
-    );
-  }
+export function HomePage() {
+  return (
+    <PageContainer>
+      <Navbar />
+      {/* Aquí añade navbar, navbar a su vez añadió logo y logo añadió la propia imagen. */}
+      <TopSection />
+      <Marginer direction="vertical" margin="8em" />
+      <BookCard />
+      <Marginer direction="vertical" margin="8em" />
+      <BookingSteps />
+      <Marginer direction="vertical" margin="8em" />
+      <AboutUs />
+      <Marginer direction="vertical" margin="8em" />
+      <TopCars />
+      <Footer />
+    </PageContainer>
+  );
 }
-
-export default HomePage;

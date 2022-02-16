@@ -76,30 +76,26 @@ font-normal
 `};
 `;
 
-class AboutUs extends React.Component {
-    render() {
-        return (
-            <AboutUsContainer>
-                <CarContainer>
-                    <img src={JeepImg} alt="" />
-                </CarContainer>
-                <InfoContainer>
-                    <InfoTitle>Feel The Best Experience With Our Rental Deals</InfoTitle>
-                    <InfoText>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quod fugit totam, velit repudiandae facilis et similique quisquam
-                        quo atque dolorem, vero possimus officia quas nulla libero, magnam eius. Ab, vero!
-                        Accusantium ratione, dicta aperiam, esse similique, cupiditate perspiciatis
-                        accusamus iusto sit mollitia nesciunt. Odio quo harum laudantium voluptas?
-                        Quia consequatur labore obcaecati numquam at laboriosam magnam pariatur
-                        eveniet maiores nobis! Vero possimus officia quas nulla libero, magnam eius. Ab, vero!
-                        Accusantium ratione, dicta aperiam, esse similique, cupiditate perspiciatis
-                        accusamus iusto sit mollitia nesciunt. Odio quo harum laudantium voluptas?
-                        Quia consequatur labore obcaecati numquam at laboriosam magnam pariatur
-                        eveniet maiores nobis!</InfoText>
-                </InfoContainer>
-            </AboutUsContainer >
-        )
-    }
+export function AboutUs() {
+    return (
+        <AboutUsContainer>
+            <CarContainer>
+                <img src={JeepImg} alt="" />
+            </CarContainer>
+            <InfoContainer>
+                <InfoTitle>Feel The Best Experience With Our Rental Deals</InfoTitle>
+                <InfoText>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quod fugit totam, velit repudiandae facilis et similique quisquam
+                    quo atque dolorem, vero possimus officia quas nulla libero, magnam eius. Ab, vero!
+                    Accusantium ratione, dicta aperiam, esse similique, cupiditate perspiciatis
+                    accusamus iusto sit mollitia nesciunt. Odio quo harum laudantium voluptas?
+                    Quia consequatur labore obcaecati numquam at laboriosam magnam pariatur
+                    eveniet maiores nobis! Vero possimus officia quas nulla libero, magnam eius. Ab, vero!
+                    Accusantium ratione, dicta aperiam, esse similique, cupiditate perspiciatis
+                    accusamus iusto sit mollitia nesciunt. Odio quo harum laudantium voluptas?
+                    Quia consequatur labore obcaecati numquam at laboriosam magnam pariatur
+                    eveniet maiores nobis!</InfoText>
+            </InfoContainer>
+        </AboutUsContainer >
+    )
 }
-
-export default AboutUs;

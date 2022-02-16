@@ -87,49 +87,45 @@ text-3xl
 `};
 `;
 
-class BookingSteps extends React.Component {
-  render() {
-    return (
-      <Container>
-        <Title>Our Working Steps</Title>
-        <StepsContainer>
-          <StepContainer>
-            <Step>
-              <StepIcon>
-                <FontAwesomeIcon icon={faMapMarkedAlt} />
-              </StepIcon>
-            </Step>
-            <StepTitle>Choose Location</StepTitle>
-            <StepDescription>
-              Find the nearest Yourcar point and book your car.
-            </StepDescription>
-          </StepContainer>
-          <StepContainer>
-            <Step>
-              <StepIcon>
-                <FontAwesomeIcon icon={faCalendarAlt} />
-              </StepIcon>
-            </Step>
-            <StepTitle>PickUp Date</StepTitle>
-            <StepDescription>
-              Pick up the best date to rent a car for you.
-            </StepDescription>
-          </StepContainer>
-          <StepContainer>
-            <Step>
-              <StepIcon>
-                <FontAwesomeIcon icon={faCarSide} />
-              </StepIcon>
-            </Step>
-            <StepTitle>Book Your Car</StepTitle>
-            <StepDescription>
-              Book the nicest car with ease in one click.
-            </StepDescription>
-          </StepContainer>
-        </StepsContainer>
-      </Container>
-    )
-  }
+export function BookingSteps() {
+  return (
+    <Container>
+      <Title>Our Working Steps</Title>
+      <StepsContainer>
+        <StepContainer>
+          <Step>
+            <StepIcon>
+              <FontAwesomeIcon icon={faMapMarkedAlt} />
+            </StepIcon>
+          </Step>
+          <StepTitle>Choose Location</StepTitle>
+          <StepDescription>
+            Find the nearest Yourcar point and book your car.
+          </StepDescription>
+        </StepContainer>
+        <StepContainer>
+          <Step>
+            <StepIcon>
+              <FontAwesomeIcon icon={faCalendarAlt} />
+            </StepIcon>
+          </Step>
+          <StepTitle>PickUp Date</StepTitle>
+          <StepDescription>
+            Pick up the best date to rent a car for you.
+          </StepDescription>
+        </StepContainer>
+        <StepContainer>
+          <Step>
+            <StepIcon>
+              <FontAwesomeIcon icon={faCarSide} />
+            </StepIcon>
+          </Step>
+          <StepTitle>Book Your Car</StepTitle>
+          <StepDescription>
+            Book the nicest car with ease in one click.
+          </StepDescription>
+        </StepContainer>
+      </StepsContainer>
+    </Container>
+  )
 }
-
-export default BookingSteps;

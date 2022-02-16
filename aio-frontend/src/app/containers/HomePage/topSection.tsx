@@ -144,33 +144,29 @@ flex-wrap
 `};
 `;
 
-class TopSection extends React.Component {
-  render() {
-    return (
-      <TopSectionContainer>
-        <LeftContainer>
-          <Slogan>Rent The Best Quality Car's With Us</Slogan>
-          <Description>
-            Always choose the best car from our local stores or order it remotely
-            at the best price for you and get the best quality cars for as long as
-            you like
-          </Description>
-          <ButtonsContainer>
-            <Button text="Book Your Ride" />
-            <Button theme="filled" text="Sell Your Car" />
-          </ButtonsContainer>
-        </LeftContainer>
-        <RightContainer>
-          <BlobContainer>
-            <img src={BlobImg} alt="" />
-          </BlobContainer>
-          <StandaloneCar>
-            <img src={MclarenCarImg} alt="" />
-          </StandaloneCar>
-        </RightContainer>
-      </TopSectionContainer>
-    );
-  }
+export function TopSection() {
+  return (
+    <TopSectionContainer>
+      <LeftContainer>
+        <Slogan>Rent The Best Quality Car's With Us</Slogan>
+        <Description>
+          Always choose the best car from our local stores or order it remotely
+          at the best price for you and get the best quality cars for as long as
+          you like
+        </Description>
+        <ButtonsContainer>
+          <Button text="Book Your Ride" />
+          <Button theme="filled" text="Sell Your Car" />
+        </ButtonsContainer>
+      </LeftContainer>
+      <RightContainer>
+        <BlobContainer>
+          <img src={BlobImg} alt="" />
+        </BlobContainer>
+        <StandaloneCar>
+          <img src={MclarenCarImg} alt="" />
+        </StandaloneCar>
+      </RightContainer>
+    </TopSectionContainer>
+  );
 }
-
-export default TopSection;
